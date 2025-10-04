@@ -6,5 +6,5 @@ Support the shell to load and run applications on the disk;
 Support virtual memory management to achieve isolation between processes;
 Support for keyboard and display;
 Referencing the standard C library makes application development more convenient;
-More than ten system calls: fork(), execve(), open(), write(), exit(), etc.
+More than ten system calls: fork(), execve(), open(), write(), exit(), etc;
 The process is separated from the operating system at different privilege levels.
