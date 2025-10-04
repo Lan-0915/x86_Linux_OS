@@ -1,10 +1,10 @@
 # x86_Linux_OS
 
-用约6000行代码实现一个小型的32位x86操作系统。系统功能如下：
-	* 支持多进程运行
-	* 支持shell加载磁盘上应用程序运行
-	* 支持虚拟内存管理，实现进程之间的隔离
-	* 键盘和显示器的支持
-	* 引用标准C库，使得应用程序开发更加方便
-	* 十余个系统调用：fork()、execve()、open()、write()、exit()等
-	* 进程与操作系统不同特权级分离
+Implement a small 32-bit x86 operating system with approximately 6,000 lines of code. The system functions are as follows:
+Support multi-process operation;
+Support the shell to load and run applications on the disk;
+Support virtual memory management to achieve isolation between processes;
+Support for keyboard and display;
+Referencing the standard C library makes application development more convenient;
+More than ten system calls: fork(), execve(), open(), write(), exit(), etc.
+The process is separated from the operating system at different privilege levels.
