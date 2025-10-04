@@ -1,0 +1,56 @@
+/**
+    VS Code 的任务配置文件（通常命名为 .vscode/tasks.json），用于定义在 VS Code 中可执行的自动化任务
+    这些任务主要服务于操作系统开发或底层程序调试，用于自动化构建磁盘映像文件和启动模拟器的流程
+    悬停可以查看属性描述
+    了解更多信息: https://go.microsoft.com/fwlink/?LinkId=733558
+
+    核心作用：自动化操作系统开发中的前置准备工作：
+        1. 先通过脚本生成最新的磁盘映像文件（包含操作系统内核、引导程序等）
+        2. 再启动 QEMU 模拟器加载该映像文件
+        3. 两个步骤被整合为一个 "调试准备" 任务，可在调试前自动执行
+    这种配置能大幅简化开发流程，让开发者无需手动执行编译、生成映像、启动模拟器等步骤，直接一键进入调试状态，非常适合操作系统内核开发这类需要频繁调试的场景
+*/
+
+{
+    "version": "2.0.0",     // 任务配置文件的版本
+    "tasks": [      // 任务数组，包含了三个具体任务
+        {
+            "label": "写映像文件",      // 生成或写入操作系统的磁盘映像文件（通常是 .img 或 .iso 格式，用于模拟器启动）
+            "type": "shell",
+            "command": "bash ${workspaceRoot}/script/img-write-osx.sh",
+            "windows": {
+                // windows下特殊一些
+                "command": "${workspaceRoot}/script/img-write-win.bat",
+            },
+            "linux":{
+                "command": "bash ${workspaceRoot}/script/img-write-linux.sh"
+            },
+            "options": {
+                "cwd": "${workspaceRoot}/../../image/"
+            }
+        },
+        {
+            "label": "启动qemu",    // 启动 QEMU 模拟器（常用于运行和调试自制操作系统）
+            "type": "shell",
+            "command": "bash ${workspaceRoot}/script/qemu-debug-osx.sh",
+            "windows": {
+                // windows下特殊一些
+                "command": "${workspaceRoot}/script/qemu-debug-win.bat",
+            },
+            "linux":{
+                "command": "bash ${workspaceRoot}/script/qemu-debug-linux.sh",
+            },
+            "options": {
+                "cwd": "${workspaceRoot}/../../image/"
+            }
+        },
+        {
+            "label": "调试准备",    // 组合上述两个任务，形成一个完整的前置流程
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "写映像文件",
+                "启动qemu"
+            ],
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+/**
+    VS Code 的 C/C++ 扩展配置文件（通常命名为 c_cpp_properties.json）
+    用于告诉 VS Code 如何解析和构建你的 C/C++ 项目
+    它主要作用是配置编译器路径、包含文件路径、预定义宏等信息，让 VS Code 能正确提供代码补全、语法检查、跳转定义等功能
+    悬停可以查看属性描述
+*/
+
+{
+    "configurations": [     // 整个文件是 JSON 格式，包含一个 configurations 数组
+        {
+            "name": "Win32",    // 配置名称，这里表示针对 Windows 平台的配置
+            "includePath": [
+                "${workspaceFolder}/**"     // 指定编译器查找头文件的路径，** 表示递归搜索工作区所有目录
+            ],
+            "defines": [
+                "_DEBUG",       // 用于区分调试模式
+                "UNICODE",      // 指定使用 Unicode 字符集
+                "_UNICODE"      // 指定使用 Unicode 字符集
+            ],
+            "windowsSdkVersion": "10.0.19041.0",      // 指定 Windows SDK 版本
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe",   // 指定编译器的路径，这里使用的是 Visual Studio 2019 的 cl.exe 编译器
+            "cStandard": "c17",         // 指定使用的 C 和 C++ 标准版本
+            "cppStandard": "c++17",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"     // 指定编译命令数据库路径（通常由 CMake 等工具生成，用于更精确的项目解析）
+        }
+    ],
+    "version": 4    // 配置文件的版本
+}

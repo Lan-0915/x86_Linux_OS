@@ -1,0 +1,28 @@
+/**
+    VS Code 的工作区配置文件（通常命名为 settings.json）
+    用于自定义 VS Code 编辑器在当前项目中的行为、插件设置和文件关联规则等
+    悬停可以查看属性描述
+*/
+
+{
+    "cmake.generator": "Unix Makefiles",    // 指定 CMake 使用的构建系统生成器为 "Unix Makefiles"，这意味着 CMake 会生成适用于 Make 工具的 Makefile 文件，用于编译项目
+    "cmake.configureOnOpen": false,         // 设置为 false 表示打开项目时不自动运行 CMake 的配置过程（默认为手动触发配置）
+    "cmake.sourceDirectory": "${workspaceFolder}/.",    // 指定 CMake 源码目录为当前工作区的根目录
+    "C_Cpp.errorSquiggles": "Disabled",     // 禁用 C/C++ 扩展的错误波浪线提示
+    "files.associations": {
+        "dirent.h": "c",        // 将 dirent.h 文件识别为 C 语言文件，而非默认的 C++ 或其他类型（下同）
+        "lib_syscall.h": "c",
+        "task.h": "c",
+        "types.h": "c",
+        "fcntl.h": "c",
+        "_default_fcntl.h": "c",
+        "loader.h": "c",
+        "klib.h": "c",
+        "list.h": "c",
+        "bitmap.h": "c",
+        "log.h": "c",
+        "fs.h": "c",
+        "os_cfg.h": "c",
+        "console.h": "c"
+    },
+}
